@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if object %}Editar{% else %}Agregar{% endif %} Producto</title>
+    <style>
+        body {
+            background-color: #fef6f9;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+        h1 {
+            color: #4ea185;
+            text-align: center;
+        }
+        form {
+            background-color: #e0f4ee;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(145, 212, 192, 0.3);
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+            color: #4ea185;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.3rem;
+            border: 1px solid #97d8c2;
+            border-radius: 6px;
+            background-color: #f5fffc;
+        }
+        button {
+            margin-top: 2rem;
+            background-color: #97d8c2;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #89c5b1;
+        }
+    </style>
+</head>
+<body>
+    <h1>{% if object %}Editar{% else %}Agregar{% endif %} producto</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

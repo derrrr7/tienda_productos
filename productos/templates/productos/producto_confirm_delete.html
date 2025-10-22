@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Producto</title>
+    <style>
+        body {
+            background-color: #fef6f9;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+            text-align: center;
+        }
+        h1 {
+            color: #c03e91;
+        }
+        p {
+            margin: 2rem 0;
+        }
+        button, a {
+            background-color: #c03e91;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            margin: 0 1rem;
+        }
+        a {
+            background-color: #97d8c2;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Eliminar producto?</h1>
+    <p>¿Estás segura de que deseas eliminar <strong>{{ object.nombre }}</strong>?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+        <a href="{% url 'producto_list' %}">Cancelar</a>
+    </form>
+</body>
+</html>

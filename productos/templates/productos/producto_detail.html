@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+    <style>
+        body {
+            background-color: #fef6f9;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #4ea185;
+        }
+        .campo {
+            margin-bottom: 1rem;
+        }
+        .campo strong {
+            color: #4ea185;
+        }
+        a {
+            display: inline-block;
+            margin-top: 2rem;
+            background-color: #97d8c2;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ object.nombre }}</h1>
+    <div class="campo"><strong>Descripción:</strong> {{ object.descripcion }}</div>
+    <div class="campo"><strong>Precio:</strong> ${{ object.precio }}</div>
+    <div class="campo"><strong>Disponible:</strong> {% if object.disponibilidad %}Sí{% else %}No{% endif %}</div>
+    <a href="{% url 'producto_list' %}">Volver a la lista</a>
+</body>
+</html>

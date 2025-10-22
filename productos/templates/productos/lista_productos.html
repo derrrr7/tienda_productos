@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+    <style>
+        body {
+            background-color: #fef6f9;
+            font-family: 'Segoe UI', sans-serif;
+            color: #444;
+            padding: 2rem;
+        }
+        h1 {
+            color: #4ea185;
+            text-align: center;
+        }
+        .btn-agregar {
+            display: block;
+            width: fit-content;
+            margin: 1rem auto 2rem;
+            background-color: #97d8c2;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .btn-agregar:hover {
+            background-color: #89c5b1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #e0f4ee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(145, 212, 192, 0.3);
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #cdeae1;
+        }
+        th {
+            background-color: #cdeae1;
+            color: #4ea185;
+        }
+        img {
+            max-width: 80px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Productos disponibles</h1>
+    <a href="{% url 'crear_producto' %}" class="btn-agregar">Agregar producto</a>
+    <table>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>
+                {% if producto.imagen %}
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                {% else %}
+                    —
+                {% endif %}
+            </td>
+            <td>{{ producto.nombre }}</td>
+            <td>${{ producto.precio }}</td>
+            <td>{{ producto.stock }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
