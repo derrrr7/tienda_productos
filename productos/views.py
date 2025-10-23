@@ -44,3 +44,11 @@ class ProductoDeleteView(DeleteView):
     model = Producto
     template_name = 'productos/producto_confirm_delete.html'
     success_url = reverse_lazy('producto_list')
+from rest_framework import viewsets
+from .models import Producto
+from .serializers import ProductoSerializer
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
